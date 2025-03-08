@@ -173,6 +173,11 @@ fun sendSecureRequest(
                     val decryptedBytes = CryptoUtils.decrypt(sharedKey, nonce, cipherText, authTag)
                     val decryptedResponse = String(decryptedBytes, Charsets.UTF_8)
 
+                    println("Nonce: ${nonce}")
+                    println("cipherText: ${cipherText}")
+                    println("authTag: ${authTag}")
+                    println("decryptedResponse: ${decryptedResponse}")
+
                     // Display it on to the UI
                     onSuccess(decryptedResponse)
                 } else {
