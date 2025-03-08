@@ -83,7 +83,6 @@ public class CryptoUtils {
         int cipherTextLength = cipherTextWithTag.length - tagLength;
         byte[] cipherText = new byte[cipherTextLength];
         byte[] authTag = new byte[tagLength];
-
         System.arraycopy(cipherTextWithTag, 0, cipherText, 0, cipherTextLength);
         System.arraycopy(cipherTextWithTag, cipherTextLength, authTag, 0, tagLength);
 
@@ -111,6 +110,7 @@ public class CryptoUtils {
      * @throws Exception if decryption fails (e.g., due to an invalid key, altered data, etc.)
      */
     public static byte[] decrypt(byte[] key, String nonceBase64, String cipherTextBase64, String authTagBase64) throws Exception {
+
         byte[] nonce = Base64.decode(nonceBase64, Base64.NO_WRAP);
         byte[] cipherText = Base64.decode(cipherTextBase64, Base64.NO_WRAP);
         byte[] authTag = Base64.decode(authTagBase64, Base64.NO_WRAP);
